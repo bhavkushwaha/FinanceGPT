@@ -1,4 +1,5 @@
 "use client";
+
 import { useRouter } from "next/navigation";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
@@ -8,20 +9,22 @@ import {
   ImageIcon,
   MessageSquare,
   FileQuestion,
+  User,
 } from "lucide-react";
+
 const tools = [
   {
     label: "Quiz Generation",
     icon: FileQuestion,
-    color: "text-emerald-500",
-    bgColor: "bg-emerald-500/10",
+    color: "text-violet-500",
+    bgColor: "bg-violet-500/10",
     href: "/quiz",
   },
   {
     label: "Doubts Solving",
     icon: MessageSquare,
-    color: "text-violet-500",
-    bgColor: "bg-violet-500/10",
+    color: "text-red-500",
+    bgColor: "bg-red-500/10",
     href: "/conversation",
   },
   {
@@ -31,9 +34,18 @@ const tools = [
     bgColor: "bg-green-700/10",
     href: "/code",
   },
+  {
+    label: "Interview PrepAI",
+    icon: User,
+    color: "text-yellow-700",
+    bgColor: "bg-yellow-700/10",
+    href: "/interview",
+  },
 ];
+
 const DashboardPage = () => {
   const router = useRouter();
+
   return (
     <div>
       <div className="mb-8 space-y-4 pb-4">
@@ -43,6 +55,7 @@ const DashboardPage = () => {
         <p className="text-muted-foreground font-light text-sm md:text-lg text-center">
           Chat with the smartest AI - Resolve your Finance queries!
         </p>
+
         <div className="px-4 md:px-20 lg:px-32 space-y-4">
           {tools.map((tool) => (
             <Card
@@ -56,6 +69,7 @@ const DashboardPage = () => {
                 </div>
                 <div className="font-semibold">{tool.label}</div>
               </div>
+
               <ArrowRight className="w-5 h-5" />
             </Card>
           ))}
@@ -64,4 +78,5 @@ const DashboardPage = () => {
     </div>
   );
 };
+
 export default DashboardPage;
