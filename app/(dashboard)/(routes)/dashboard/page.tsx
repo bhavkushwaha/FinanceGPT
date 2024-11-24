@@ -10,32 +10,36 @@ import {
   MessageSquare,
   FileQuestion,
   User,
+  CoinsIcon,
+  DollarSign,
+  IndianRupee,
+  Save,
 } from "lucide-react";
 
 const tools = [
   {
-    label: "Quiz Generation",
-    icon: FileQuestion,
+    label: "Budget Planning",
+    icon: Save,
     color: "text-violet-500",
     bgColor: "bg-violet-500/10",
     href: "/quiz",
   },
   {
-    label: "Doubts Solving",
-    icon: MessageSquare,
+    label: "Investment Strategies",
+    icon: IndianRupee,
     color: "text-red-500",
     bgColor: "bg-red-500/10",
     href: "/conversation",
   },
   {
-    label: "Coding Assistant",
-    icon: Code,
+    label: "Financial Doubts Solving",
+    icon: MessageSquare,
     color: "text-green-700",
     bgColor: "bg-green-700/10",
     href: "/code",
   },
   {
-    label: "Interview PrepAI",
+    label: "My Financial Habits",
     icon: User,
     color: "text-yellow-700",
     bgColor: "bg-yellow-700/10",
@@ -53,7 +57,7 @@ const DashboardPage = () => {
           FinanceGPT
         </h2>
         <p className="text-muted-foreground font-light text-sm md:text-lg text-center">
-          Chat with the smartest AI - Resolve your Finance queries!
+          Chat with the smartest AI - Resolve your Financial queries!
         </p>
 
         <div className="px-4 md:px-20 lg:px-32 space-y-4">

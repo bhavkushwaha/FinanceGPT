@@ -21,7 +21,7 @@ export const LandingNavbar = () => {
         <div className="relative h-8 w-8 mr-3">
           <Brain className="h-8 w-9 text-purple-600" />
         </div>
-        <h1 className="text-3xl font-bold">FinanceGPT</h1>
+        <h1 className="text-3xl font-bold">AssessMate</h1>
       </Link>
       <div className="flex items-center gap-x-2">
         <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
