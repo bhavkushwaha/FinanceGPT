@@ -3,7 +3,7 @@
 import { useState } from "react";
 import axios from "axios";
 import * as z from "zod";
-import { MessageSquare, User, UserIcon } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { formSchema } from "./constants";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -24,17 +24,19 @@ import { BotAvatar } from "@/components/bot-avatar";
 import { useProModal } from "@/hooks/use-pro-modal";
 import { useToast } from "@/hooks/use-toast";
 
-const InterviewPrepPage = () => {
+const DoubtSolvePage = () => {
   const router = useRouter();
+
   const proModal = useProModal();
+
   const [messages, setMessages] = useState<ChatCompletionMessageParam[]>([]);
+
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      jobTitle: "",
-      jobDescription: "",
+      prompt: "",
     },
   });
 
@@ -44,12 +46,12 @@ const InterviewPrepPage = () => {
     try {
       const userMessage: ChatCompletionMessageParam = {
         role: "user",
-        content: `Job Title: ${values.jobTitle}. Job Description: ${values.jobDescription}.`,
+        content: values.prompt,
       };
 
       const newMessages = [...messages, userMessage];
 
-      const response = await axios.post("/api/interview", {
+      const response = await axios.post("/api/budget", {
         messages: newMessages,
       });
 
@@ -60,7 +62,7 @@ const InterviewPrepPage = () => {
       toast({
         title: "Something went wrong",
         variant: "destructive",
-        description: error?.response?.data?.length ?? "Please try again.",
+        description: error?.response?.data ?? "Please try again.",
       });
 
       if (error?.response?.status === 403) {
@@ -76,7 +78,7 @@ const InterviewPrepPage = () => {
     let message = "";
 
     for (const [key, value] of Object.entries(errors)) {
-      message += `${key}: ${value.message}\n\n`;
+      message += `Prompt: ${value.message}\n\n`;
     }
 
     toast({
@@ -89,11 +91,11 @@ const InterviewPrepPage = () => {
   return (
     <div>
       <Heading
-        title="Interview Prep AI"
-        description="Generate interview questions based on your job title, description, and resume."
-        icon={UserIcon}
-        iconColor="text-yellow-500"
-        bgColor="bg-yellow-700/10"
+        title="Budget Planning"
+        description="Get the insights to create budgets powered by our AI"
+        icon={MessageSquare}
+        iconColor="text-violet-500"
+        bgColor="bg-violet-700/10"
       />
       <div className="px-4 lg:px-8 pb-8">
         <div>
@@ -103,29 +105,14 @@ const InterviewPrepPage = () => {
               className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2"
             >
               <FormField
-                name="jobTitle"
+                name="prompt"
                 render={({ field }) => (
-                  <FormItem className="col-span-12">
+                  <FormItem className="col-span-12 lg:col-span-10">
                     <FormControl className="m-0 p-0">
                       <Input
                         className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         disabled={isLoading}
-                        placeholder="Enter Job Title...(Web Developer)"
-                        {...field}
-                      />
-                    </FormControl>
-                  </FormItem>
-                )}
-              />
-              <FormField
-                name="jobDescription"
-                render={({ field }) => (
-                  <FormItem className="col-span-12">
-                    <FormControl className="m-0 p-0">
-                      <Input
-                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
-                        disabled={isLoading}
-                        placeholder="Enter Job Description...(FullStack Developer)"
+                        placeholder="What is the difference between active fund and passive fund?"
                         {...field}
                       />
                     </FormControl>
@@ -133,8 +120,7 @@ const InterviewPrepPage = () => {
                 )}
               />
               <Button
-                type="submit"
-                className="col-span-12 w-full"
+                className="col-span-12 lg:col-span-2 w-full"
                 disabled={isLoading}
               >
                 Generate
@@ -151,7 +137,7 @@ const InterviewPrepPage = () => {
 
           {messages.length === 0 && !isLoading && (
             <div>
-              <Empty label="No questions generated yet." />
+              <Empty label="No conversation started." />
             </div>
           )}
 
@@ -191,4 +177,4 @@ const InterviewPrepPage = () => {
   );
 };
 
-export default InterviewPrepPage;
+export default DoubtSolvePage;

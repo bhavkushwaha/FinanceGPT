@@ -3,7 +3,7 @@
 import { useState } from "react";
 import axios from "axios";
 import * as z from "zod";
-import { Code } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { formSchema } from "./constants";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -24,7 +24,7 @@ import { BotAvatar } from "@/components/bot-avatar";
 import { useProModal } from "@/hooks/use-pro-modal";
 import { useToast } from "@/hooks/use-toast";
 
-const CodePage = () => {
+const DoubtSolvePage = () => {
   const router = useRouter();
 
   const proModal = useProModal();
@@ -51,7 +51,7 @@ const CodePage = () => {
 
       const newMessages = [...messages, userMessage];
 
-      const response = await axios.post("/api/code", {
+      const response = await axios.post("/api/doubt", {
         messages: newMessages,
       });
 
@@ -64,7 +64,7 @@ const CodePage = () => {
         variant: "destructive",
         description: error?.response?.data ?? "Please try again.",
       });
-      
+
       if (error?.response?.status === 403) {
         proModal.onOpen();
       }
@@ -91,10 +91,10 @@ const CodePage = () => {
   return (
     <div>
       <Heading
-        title="Coding Assistant"
-        description="Generate code for your school projects using descriptive text."
-        icon={Code}
-        iconColor="text-green-700"
+        title="Financial Doubt Solving"
+        description="Get the latest solutions to all your financial queries powered by our AI"
+        icon={MessageSquare}
+        iconColor="text-green-500"
         bgColor="bg-green-700/10"
       />
       <div className="px-4 lg:px-8 pb-8">
@@ -112,7 +112,7 @@ const CodePage = () => {
                       <Input
                         className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         disabled={isLoading}
-                        placeholder="Simple Toggle Button using React hooks."
+                        placeholder="What is the difference between active fund and passive fund?"
                         {...field}
                       />
                     </FormControl>
@@ -177,4 +177,4 @@ const CodePage = () => {
   );
 };
 
-export default CodePage;
+export default DoubtSolvePage;

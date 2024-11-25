@@ -22,28 +22,28 @@ const tools = [
     icon: Save,
     color: "text-violet-500",
     bgColor: "bg-violet-500/10",
-    href: "/quiz",
+    href: "/budget",
   },
   {
     label: "Investment Strategies",
     icon: IndianRupee,
     color: "text-red-500",
     bgColor: "bg-red-500/10",
-    href: "/conversation",
+    href: "/investment",
   },
   {
     label: "Financial Doubts Solving",
     icon: MessageSquare,
     color: "text-green-700",
     bgColor: "bg-green-700/10",
-    href: "/code",
+    href: "/doubt",
   },
   {
     label: "My Financial Habits",
     icon: User,
     color: "text-yellow-700",
     bgColor: "bg-yellow-700/10",
-    href: "/interview",
+    href: "/habits",
   },
 ];
 

@@ -10,7 +10,7 @@ export const LandingHero = () => {
   return (
     <div className="text-black font-bond py-40 text-center space-y-5">
       <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl space-y-5 font-bold">
-        <h1>Welcome to FinGPT</h1>
+        <h1>Welcome to FinanceGPT</h1>
         <div className="text-lg font-normal">
           <p className="mx-auto max-w-[700px] mt-7 text-gray-500 md:text-xl lg:text-2xl" >
             Revolutionize your Financial Health with AI-powered intelligence. Create, assess, and learn smarter ways to manage your assets.
@@ -29,7 +29,7 @@ export const LandingHero = () => {
         </Link>
       </div>
       <div className="text-zinc-400 text-xs md:text-sm font-normal">
-      Start your journey with FinGPT. 
+      Start your journey with FinanceGPT. 
       </div>
     </div>
   );

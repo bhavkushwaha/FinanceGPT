@@ -37,25 +37,25 @@ const routes = [
   {
     label: "Budget Planning",
     icon: Save,
-    href: "/quiz",
+    href: "/budget",
     color: "text-violet-500",
   },
   {
     label: "Investment Strategies",
     icon: IndianRupee,
-    href: "/conversation",
+    href: "/investment",
     color: "text-red-500",
   },  
   {
     label: "Financial Doubts Solving",
     icon: MessageSquare,
-    href: "/code",
+    href: "/doubt",
     color: "text-green-700",
   },
   {
     label: "My Financial Habits",
     icon: User,
-    href: "/interview",
+    href: "/habits",
     color: "text-yellow-500",
   }
 ];
