@@ -24,7 +24,7 @@ export const LandingNavbar = () => {
         <h1 className="text-3xl font-bold">FinanceGPT</h1>
       </Link>
       <div className="flex items-center gap-x-2">
-        <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
+        <Link href="https://wealthwise-finance.vercel.app/">
           {/* <Button variant="outline" className="rounded- bg-purple-600">
             <h3 className="font-semibold text-white">Get Started</h3>
           </Button> */}
@@ -32,7 +32,7 @@ export const LandingNavbar = () => {
             className="hidden md:block bg-purple-600 hover:bg-purple-700 text-md font-semibold"
             size="lg"
           >
-            Get Started
+            Back
           </Button>
         </Link>
       </div>
